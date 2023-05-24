@@ -3,6 +3,8 @@ import express from 'express';
 import errorMiddleware from './middlewares/error.middleware.js';
 import routes from './routes/router.js';
 import connection from './database/connection.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 
@@ -21,6 +23,6 @@ app.use(routes);
 app.use(errorMiddleware);
 
 // Inicia o servidor na porta 3000
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
 });
